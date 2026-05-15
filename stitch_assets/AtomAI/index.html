@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AtomAI - Scale Intelligence with AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;500&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#0a0a0a",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "surface": "#0a0a0a",
+                        "on-secondary-container": "#00285c",
+                        "on-surface": "#f5f5f5",
+                        "surface-container-high": "#1a1a1a",
+                        "inverse-surface": "#e5e2e1",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-error": "#690005",
+                        "outline": "#4a4a4a",
+                        "tertiary-fixed": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "primary-container": "#e2e2e2",
+                        "surface-bright": "#222",
+                        "on-primary-fixed": "#1a1c1c",
+                        "error-container": "#93000a",
+                        "secondary": "#a3b8ff",
+                        "background": "#050505",
+                        "tertiary-container": "#e5e2e1",
+                        "surface-container-highest": "#222222",
+                        "outline-variant": "#333",
+                        "on-primary-container": "#636565",
+                        "inverse-primary": "#5d5f5f",
+                        "on-primary-fixed-variant": "#454747",
+                        "on-primary": "#050505",
+                        "surface-tint": "#c6c6c7",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "on-surface-variant": "#a0a0a0",
+                        "tertiary": "#ffffff",
+                        "on-background": "#f5f5f5",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-tertiary": "#313030",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#002e69",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-tertiary-container": "#656464",
+                        "primary-fixed": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#004493",
+                        "surface-container-lowest": "#000000",
+                        "on-secondary-fixed": "#001a41",
+                        "secondary-container": "#2a52be",
+                        "primary": "#ffffff",
+                        "surface-container-low": "#111111",
+                        "surface-variant": "#1f1f1f",
+                        "surface-container": "#161616"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "container-max": "1440px",
+                        "section-gap": "240px",
+                        "element-gap": "48px",
+                        "gutter": "48px"
+                    },
+                    "fontFamily": {
+                        "label-mono": ["Geist"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-xl": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-mono": ["11px", { "lineHeight": "1", "letterSpacing": "0.15em", "fontWeight": "300" }],
+                        "body-md": ["16px", { "lineHeight": "1.7", "letterSpacing": "0.01em", "fontWeight": "300" }],
+                        "body-lg": ["20px", { "lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "300" }],
+                        "headline-lg": ["56px", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "300" }],
+                        "display-lg": ["80px", { "lineHeight": "1", "letterSpacing": "-0.04em", "fontWeight": "300" }],
+                        "headline-lg-mobile": ["40px", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "300" }],
+                        "display-xl": ["120px", { "lineHeight": "0.95", "letterSpacing": "-0.05em", "fontWeight": "300" }]
+                    },
+                    "animation": {
+                        "fade-in": "fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+                        "fade-in-up": "fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+                        "float": "float 10s ease-in-out infinite alternate",
+                        "float-delayed": "float 12s ease-in-out infinite alternate-reverse",
+                        "pulse-slow": "pulseSlow 4s ease-in-out infinite"
+                    },
+                    "keyframes": {
+                        "fadeIn": {
+                            "0%": { opacity: "0" },
+                            "100%": { opacity: "1" }
+                        },
+                        "fadeInUp": {
+                            "0%": { opacity: "0", transform: "translateY(20px)" },
+                            "100%": { opacity: "1", transform: "translateY(0)" }
+                        },
+                        "pulseSlow": {
+                            "0%, 100%": { opacity: "1" },
+                            "50%": { opacity: "0.5" }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Ultra Premium Atmospheric Effects */
+        .bg-spotlight {
+            background: radial-gradient(circle at 50% -20%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 40%, rgba(0,0,0,0) 80%);
+        }
+        
+        .bg-grain {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .bg-vignette {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 40;
+            background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.8) 100%);
+        }
+
+        /* Glassmorphism & Depth */
+        .bg-glass {
+            background: rgba(15, 15, 15, 0.4);
+            backdrop-filter: blur(40px) saturate(120%);
+            -webkit-backdrop-filter: blur(40px) saturate(120%);
+        }
+        
+        .bg-glass-heavy {
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(60px) saturate(150%);
+            -webkit-backdrop-filter: blur(60px) saturate(150%);
+        }
+
+        .border-glass {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .inner-glow {
+            box-shadow: 
+                inset 0 1px 1px 0 rgba(255, 255, 255, 0.1),
+                0 20px 40px -10px rgba(0,0,0,0.5);
+        }
+        
+        .premium-shadow {
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255,255,255,0.03);
+        }
+
+        /* Typography Refinements */
+        .text-glow {
+            text-shadow: 0 0 40px rgba(255,255,255,0.2);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.5) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Motion & Physics */
+        .hover-float {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hover-float:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8), 0 0 50px rgba(255,255,255,0.05);
+        }
+        
+        .ambient-motion {
+            animation: float 20s ease-in-out infinite alternate;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+            100% { transform: translateY(10px) scale(0.95); }
+        }
+
+        /* Custom Gradients for Hero */
+        .hero-bg {
+            background: #030303;
+        }
+        .text-gradient-custom {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #6366f1, #e879f9, #f59e0b);
+        }
+        .shape-gradient-1 {
+            background: linear-gradient(135deg, rgba(99,102,241,0.4) 0%, rgba(232,121,249,0.4) 100%);
+        }
+        .shape-gradient-2 {
+            background: linear-gradient(135deg, rgba(232,121,249,0.4) 0%, rgba(245,158,11,0.4) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col selection:bg-secondary-container selection:text-on-secondary-container antialiased">
+<div class="bg-grain"></div>
+<div class="bg-vignette"></div>
+<!-- TopNavBar -->
+<nav class="bg-background/40 backdrop-blur-3xl text-primary fixed top-0 w-full z-50 border-b border-white/5 flex justify-between items-center h-24 px-gutter max-w-[1920px] mx-auto left-0 right-0 transition-all duration-500">
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-light tracking-tighter text-primary scale-95 active:scale-90 transition-transform">
+            AtomAI
+        </div>
+<div class="hidden md:flex gap-12">
+<a class="text-on-surface-variant font-light hover:text-primary transition-colors duration-500 font-label-mono text-label-mono tracking-[0.2em] uppercase" href="#">Products</a>
+<a class="text-on-surface-variant font-light hover:text-primary transition-colors duration-500 font-label-mono text-label-mono tracking-[0.2em] uppercase" href="#">Services</a>
+<a class="text-on-surface-variant font-light hover:text-primary transition-colors duration-500 font-label-mono text-label-mono tracking-[0.2em] uppercase" href="#">Projects</a>
+</div>
+<a class="hidden md:flex bg-white/5 backdrop-blur-md border border-white/10 text-primary px-8 py-3 rounded-full font-label-mono text-label-mono hover:bg-white/10 transition-all duration-500 uppercase tracking-widest hover-float" href="#">
+            Contact
+        </a>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined text-[32px]">menu</span>
+</button>
+</nav>
+<main class="flex-grow pt-24 relative z-10">
+<!-- Hero Geometric Section -->
+<section class="relative min-h-[100vh] flex items-center justify-center overflow-hidden hero-bg pt-20">
+<div class="absolute inset-0 bg-transparent z-0">
+<div class="absolute top-[20%] left-[15%] w-72 h-72 rounded-full shape-gradient-1 blur-[100px] animate-float opacity-60"></div>
+<div class="absolute bottom-[20%] right-[15%] w-96 h-96 rounded-full shape-gradient-2 blur-[120px] animate-float-delayed opacity-50"></div>
+<div class="absolute top-[40%] left-[50%] -translate-x-1/2 w-[800px] h-[400px] rounded-[100%] bg-white/5 blur-[150px] mix-blend-overlay"></div>
+</div>
+<!-- 3D Geometric Shapes (Simulated via CSS) -->
+<div class="absolute inset-0 pointer-events-none z-10 flex items-center justify-center">
+<div class="absolute left-[20%] top-[30%] w-32 h-32 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 backdrop-blur-xl border border-white/10 rounded-2xl transform rotate-12 animate-float" style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.2);"></div>
+<div class="absolute right-[25%] bottom-[35%] w-40 h-40 bg-gradient-to-br from-rose-500/20 to-amber-500/20 backdrop-blur-xl border border-white/10 rounded-full transform -rotate-12 animate-float-delayed" style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.2);"></div>
+<div class="absolute left-[60%] top-[15%] w-20 h-20 bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 backdrop-blur-xl border border-white/10 rounded-lg transform rotate-45 animate-float opacity-70" style="animation-delay: 2s; box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.2);"></div>
+</div>
+<div class="relative z-20 max-w-[1600px] mx-auto px-gutter text-center flex flex-col items-center gap-8 mt-12 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s;">
+<div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-2 rounded-full font-label-mono text-label-mono text-on-surface-variant mb-6 uppercase tracking-[0.3em] backdrop-blur-md relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<span class="relative z-10 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-white/80 animate-pulse-slow"></span>
+                        Kokonut UI Inspired
+                    </span>
+</div>
+<h1 class="font-display-xl text-[64px] md:text-[100px] lg:text-[130px] tracking-tighter max-w-[1200px] mx-auto leading-[1.1] md:leading-[0.95] text-glow pb-4 font-light flex flex-col gap-2">
+<span class="text-white/90 opacity-0 animate-fade-in-up" style="animation-delay: 0.4s;">Elevate Your</span>
+<span class="text-white/90 opacity-0 animate-fade-in-up" style="animation-delay: 0.5s;">Digital Vision</span>
+<span class="text-gradient-custom font-normal mt-2 opacity-0 animate-fade-in-up" style="animation-delay: 0.6s;">AtomAI Intelligence</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-6 font-light leading-relaxed text-[20px] md:text-[24px] opacity-0 animate-fade-in-up" style="animation-delay: 0.8s;">
+                    Bespoke AI products and automated systems designed for modern performance. Manage data, automate workflows, and optimize strategy with precision.
+                </p>
+<div class="flex flex-col sm:flex-row gap-6 mt-12 opacity-0 animate-fade-in-up" style="animation-delay: 1s;">
+<button class="bg-white text-black px-10 py-5 rounded-full font-label-mono text-label-mono hover:bg-white/90 transition-all duration-500 shadow-[0_0_30px_rgba(255,255,255,0.2)] flex items-center justify-center gap-3 uppercase tracking-widest hover-float group">
+                        Explore Products 
+                        <span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="bg-white/5 backdrop-blur-md border border-white/10 text-white px-10 py-5 rounded-full font-label-mono text-label-mono hover:bg-white/10 transition-all duration-500 flex items-center justify-center gap-3 uppercase tracking-widest hover-float">
+                        View Projects
+                    </button>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 animate-fade-in" style="animation-delay: 1.5s;">
+<span class="font-label-mono text-[10px] text-white/40 tracking-[0.3em] uppercase">Scroll to explore</span>
+<div class="w-[1px] h-12 bg-gradient-to-b from-white/20 to-transparent"></div>
+</div>
+</section>
+<!-- Trusted Partners -->
+<section class="py-32 border-y border-white/5 bg-surface-container-lowest/50 backdrop-blur-sm relative z-10">
+<div class="max-w-container-max mx-auto px-gutter flex flex-wrap justify-center md:justify-between items-center gap-16 opacity-40 grayscale hover:opacity-60 transition-opacity duration-1000">
+<span class="font-headline-lg-mobile text-[28px] tracking-[0.3em] uppercase font-light">Asterisk</span>
+<span class="font-headline-lg-mobile text-[28px] tracking-[0.3em] uppercase font-normal">Eooks</span>
+<span class="font-headline-lg-mobile text-[28px] tracking-[0.3em] uppercase font-light flex items-center gap-4"><span class="material-symbols-outlined text-[32px]">change_history</span>Opal</span>
+<span class="font-headline-lg-mobile text-[28px] tracking-[0.3em] uppercase font-light flex items-center gap-4"><span class="material-symbols-outlined text-[32px]">tonality</span>Dune</span>
+<span class="font-headline-lg-mobile text-[28px] tracking-[0.3em] uppercase font-light">Oasis</span>
+</div>
+</section>
+<!-- Featured AI Products -->
+<section class="py-section-gap max-w-[1600px] mx-auto px-gutter relative z-10">
+<div class="mb-32 text-center md:text-left">
+<h2 class="font-display-lg text-[96px] tracking-tighter text-gradient mb-8">Featured AI Products</h2>
+<p class="font-body-lg text-[24px] text-on-surface-variant font-light max-w-3xl">Enterprise-grade software solutions engineered for scale and speed.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+<div class="lg:col-span-8 bg-glass border-glass inner-glow rounded-3xl p-12 lg:p-16 flex flex-col justify-between group overflow-hidden relative hover-float premium-shadow min-h-[700px]">
+<div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 z-0"></div>
+<div class="absolute -top-40 -right-40 w-96 h-96 bg-secondary/10 blur-[100px] rounded-full z-0 group-hover:bg-secondary/20 transition-colors duration-1000"></div>
+<div class="relative z-10 mb-16">
+<div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-full font-label-mono text-label-mono text-secondary mb-8 uppercase tracking-[0.2em]">
+                            PRODUCT // 01
+                        </div>
+<h3 class="font-headline-lg text-[64px] text-primary mb-6 tracking-tight">Neural Data Pipeline</h3>
+<p class="font-body-md text-[20px] text-on-surface-variant max-w-xl font-light leading-relaxed">Seamlessly aggregate, process, and analyze vast datasets in real-time with autonomous agents.</p>
+</div>
+<div class="relative z-10 w-full h-[400px] rounded-2xl overflow-hidden border border-white/10 bg-black mt-auto shadow-2xl">
+<img alt="Abstract data visualization with glowing blue nodes and connections." class="w-full h-full object-cover opacity-60 mix-blend-screen group-hover:opacity-90 group-hover:scale-105 transition-all duration-1000 ease-out" data-alt="A sophisticated data visualization interface showing glowing blue nodes and geometric network connections on a dark background. The scene is illuminated by a cold, cinematic blue light typical of high-end cybernetic dashboards. The UI elements are sharp, precise, and convey a sense of immense processing power. The overall aesthetic is dark, expensive, and deeply technological." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWrPrE5DyCKBt_mQevHs0BG3CnkIf8wSX5oqDtxgCQ2dkboI9EPAjYQZa7_GoiF30JcKKzqiGGBOdZB6G5fe8eIw5dlJszhG30Q_T9pZK8swJhPsBK4Rrk2HW4perVGauumsBcRdy6xbOlt7n5zHF6u19n1PLi_EA1MLThE7wP8tiUQQj476FlqNPj4nxq9NjBxX1r7akDVfQlYZTjZAvzgXESwoDORBSIDXwxZqb2KtOhDIAOo_j3rL7w8t9jo1YCmmWnLPdLqGw"/>
+</div>
+<div class="relative z-10 flex gap-6 mt-12">
+<button class="bg-glass border border-white/20 text-primary px-8 py-4 rounded-full font-label-mono text-label-mono hover:bg-white/10 transition-all duration-500 flex items-center gap-3 uppercase tracking-widest hover-float">
+<span class="material-symbols-outlined text-[20px]">download</span> Software Downloads
+                        </button>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-8 lg:gap-12">
+<div class="flex-1 bg-glass border-glass inner-glow rounded-3xl p-10 lg:p-12 flex flex-col justify-between group relative overflow-hidden hover-float premium-shadow">
+<div class="absolute -bottom-20 -left-20 w-64 h-64 bg-white/5 blur-[80px] rounded-full z-0 group-hover:bg-white/10 transition-colors duration-1000"></div>
+<div class="relative z-10">
+<div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-full font-label-mono text-label-mono text-secondary mb-8 uppercase tracking-[0.2em]">
+                                PRODUCT // 02
+                            </div>
+<h3 class="font-headline-lg-mobile text-[48px] text-primary mb-4 tracking-tight">Automata Studio</h3>
+<p class="font-body-md text-[18px] text-on-surface-variant font-light leading-relaxed">Visual builder for complex AI workflows.</p>
+</div>
+<button class="mt-12 bg-transparent border border-white/20 text-primary px-8 py-4 rounded-full font-label-mono text-label-mono hover:border-white hover:bg-white/5 transition-all duration-500 w-fit flex items-center gap-3 uppercase tracking-widest relative z-10">
+<span class="material-symbols-outlined text-[20px]">play_arrow</span> Live Demo
+                        </button>
+</div>
+<div class="flex-1 bg-glass border-glass inner-glow rounded-3xl p-10 lg:p-12 flex flex-col justify-between group relative overflow-hidden hover-float premium-shadow">
+<div class="absolute -top-20 -right-20 w-64 h-64 bg-white/5 blur-[80px] rounded-full z-0 group-hover:bg-white/10 transition-colors duration-1000"></div>
+<div class="relative z-10">
+<div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-full font-label-mono text-label-mono text-secondary mb-8 uppercase tracking-[0.2em]">
+                                PRODUCT // 03
+                            </div>
+<h3 class="font-headline-lg-mobile text-[48px] text-primary mb-4 tracking-tight">Synapse API</h3>
+<p class="font-body-md text-[18px] text-on-surface-variant font-light leading-relaxed">Low-latency language model routing.</p>
+</div>
+<button class="mt-12 bg-transparent border border-white/20 text-primary px-8 py-4 rounded-full font-label-mono text-label-mono hover:border-white hover:bg-white/5 transition-all duration-500 w-fit flex items-center gap-3 uppercase tracking-widest relative z-10">
+<span class="material-symbols-outlined text-[20px]">play_arrow</span> Live Demo
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Automation Services -->
+<section class="py-section-gap border-t border-white/5 bg-surface-container-lowest/80 relative z-10 overflow-hidden">
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(255,255,255,0.03)_0%,_transparent_60%)] pointer-events-none"></div>
+<div class="max-w-[1600px] mx-auto px-gutter">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+<div>
+<h2 class="font-display-lg text-[88px] tracking-tighter text-gradient mb-10 leading-[1.05]">AI-Powered Workflow Automation</h2>
+<p class="font-body-lg text-[22px] text-on-surface-variant mb-12 font-light leading-relaxed max-w-2xl">
+                            We build AI-powered systems tailored to your goals. Every solution starts with a clear, goal-focused strategy. Automate repetitive tasks, enhance decision-making, and unlock new operational capabilities.
+                        </p>
+<ul class="space-y-8 mb-16">
+<li class="flex items-center gap-6 text-on-surface-variant font-body-md text-[20px] font-light">
+<span class="material-symbols-outlined text-secondary text-[28px] opacity-80">check_circle</span> Custom Agentic Swarms
+                            </li>
+<li class="flex items-center gap-6 text-on-surface-variant font-body-md text-[20px] font-light">
+<span class="material-symbols-outlined text-secondary text-[28px] opacity-80">check_circle</span> Predictive Analytics Engine
+                            </li>
+<li class="flex items-center gap-6 text-on-surface-variant font-body-md text-[20px] font-light">
+<span class="material-symbols-outlined text-secondary text-[28px] opacity-80">check_circle</span> Legacy System Integration
+                            </li>
+</ul>
+<button class="bg-white text-black px-10 py-5 rounded-full font-label-mono text-label-mono hover:bg-white/90 transition-all duration-500 shadow-[0_0_30px_rgba(255,255,255,0.15)] uppercase tracking-widest hover-float">
+                            Discuss Services
+                        </button>
+</div>
+<div class="relative lg:ml-auto w-full max-w-xl">
+<div class="absolute inset-0 bg-secondary/10 blur-[120px] rounded-full mix-blend-screen ambient-motion"></div>
+<div class="relative bg-glass-heavy border-glass inner-glow rounded-3xl p-10 lg:p-12 premium-shadow hover-float">
+<div class="flex items-center justify-between mb-10 border-b border-white/10 pb-8">
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-[0.2em]">Services for All Sectors</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[24px]">tune</span>
+</div>
+<div class="space-y-6">
+<div class="flex items-center justify-between p-6 bg-white/5 rounded-2xl border border-white/5 hover:border-white/20 hover:bg-white/10 transition-all duration-500 cursor-pointer group">
+<span class="font-body-md text-[18px] text-primary font-light">Marketing Agencies</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] group-hover:text-white group-hover:translate-x-2 transition-all">arrow_forward</span>
+</div>
+<div class="flex items-center justify-between p-6 bg-white/5 rounded-2xl border border-white/5 hover:border-white/20 hover:bg-white/10 transition-all duration-500 cursor-pointer group">
+<span class="font-body-md text-[18px] text-primary font-light">Financial Technology</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] group-hover:text-white group-hover:translate-x-2 transition-all">arrow_forward</span>
+</div>
+<div class="flex items-center justify-between p-6 bg-white/5 rounded-2xl border border-white/5 hover:border-white/20 hover:bg-white/10 transition-all duration-500 cursor-pointer group">
+<span class="font-body-md text-[18px] text-primary font-light">E-Commerce &amp; Drop-shipping</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] group-hover:text-white group-hover:translate-x-2 transition-all">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-section-gap relative overflow-hidden flex items-center justify-center min-h-[80vh] z-10">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.05)_0%,_transparent_70%)]"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 bg-secondary/5 blur-[150px] rounded-full mix-blend-screen pointer-events-none"></div>
+<div class="relative z-10 text-center max-w-4xl mx-auto px-gutter flex flex-col items-center">
+<h2 class="font-display-xl text-[120px] md:text-[160px] tracking-tighter text-gradient mb-16 leading-[0.9] text-glow">The Future<br/>is Intelligent.</h2>
+<button class="bg-primary text-on-primary px-12 py-6 rounded-full font-label-mono text-label-mono text-[14px] hover:bg-white/90 transition-all duration-500 shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.3)] uppercase tracking-[0.2em] hover-float">
+                    Get Started
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-dim text-tertiary-fixed-dim border-t border-white/5 relative z-10 pt-32 pb-16">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 px-gutter max-w-[1600px] mx-auto">
+<div class="col-span-1 lg:col-span-2 flex flex-col justify-between h-full">
+<div>
+<div class="font-headline-lg-mobile text-[40px] font-light text-primary mb-8 tracking-tighter opacity-70 hover:opacity-100 transition-opacity duration-500">
+                        AtomAI
+                    </div>
+<p class="font-body-md text-[16px] text-on-surface-variant font-light max-w-sm leading-relaxed">
+                        Engineering the Future. Bespoke AI solutions for scale and speed.
+                    </p>
+</div>
+<div class="mt-16 font-label-mono text-[11px] text-on-surface-variant/50 uppercase tracking-widest">
+                    © 2024 AtomAI. All Rights Reserved.
+                </div>
+</div>
+<div class="col-span-1 flex flex-col gap-6">
+<div class="font-label-mono text-label-mono text-primary mb-4 tracking-[0.3em] uppercase opacity-50">LEGAL</div>
+<a class="text-on-surface-variant font-body-md text-[16px] font-light hover:text-white transition-colors duration-300 w-fit" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-body-md text-[16px] font-light hover:text-white transition-colors duration-300 w-fit" href="#">Terms of Service</a>
+</div>
+<div class="col-span-1 flex flex-col gap-6">
+<div class="font-label-mono text-label-mono text-primary mb-4 tracking-[0.3em] uppercase opacity-50">SOCIAL</div>
+<a class="text-on-surface-variant font-body-md text-[16px] font-light hover:text-white transition-colors duration-300 flex items-center gap-3 w-fit group" href="#">
+                     LinkedIn <span class="material-symbols-outlined text-[16px] opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all">arrow_outward</span>
+</a>
+<a class="text-on-surface-variant font-body-md text-[16px] font-light hover:text-white transition-colors duration-300 flex items-center gap-3 w-fit group" href="#">
+                    Twitter <span class="material-symbols-outlined text-[16px] opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all">arrow_outward</span>
+</a>
+</div>
+</div>
+</footer>
+</body></html>
